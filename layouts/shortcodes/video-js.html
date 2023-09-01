@@ -1,0 +1,27 @@
+{{- $src := "" }}
+{{- $type := "" }}
+{{- $muted := false }}
+{{- $controls := true }}
+{{- $loop := false }}
+{{- $preload := false }}
+{{- $autoplay := false }}
+{{- if .IsNamedParams }}
+  {{- $src = .Get "src" }}
+  {{- with .Get "type" }}{{ $type = . }}{{ end }}
+  {{- if isset .Params "muted" }}{{ $muted = .Get "muted" }}{{ end }}
+  {{- if isset .Params "controls" }}{{ $controls = .Get "controls" }}{{ end }}
+  {{- if isset .Params "loop" }}{{ $loop = .Get "loop" }}{{ end }}
+  {{- if isset .Params "preload" }}{{ $preload = .Get "preload" }}{{ end }}
+  {{- if isset .Params "autoplay" }}{{ $autoplay = .Get "autoplay" }}{{ end }}
+{{- else }}
+  {{- $src = .Get 0 }}
+{{- end }}
+{{ partial "video-js/video" (dict
+  "src" $src
+  "type" $type
+  "muted" $muted
+  "controls" $controls
+  "loop" $loop
+  "autoplay" $autoplay
+  "preload" $preload
+) }}

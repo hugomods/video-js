@@ -1,0 +1,14 @@
+<div
+  class="video-js-container">
+  <video
+    width="100%"
+    {{ if default false .muted }}muted{{ end }}
+    {{ if default true .controls }}controls{{ end }}
+    {{ if default false .loop }}loop{{ end }}
+    {{ if default false .preload }}preload="auto"{{ end }}
+    {{ if default false .autoplay }}autoplay{{ end }}>
+    <source
+    src="{{ .src }}"
+    {{ with .type }}type="{{ . }}"{{ end }}>
+  </video>
+</div>

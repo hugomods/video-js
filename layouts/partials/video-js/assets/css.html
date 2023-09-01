@@ -1,0 +1,3 @@
+{{- if partialCached "video-js/functions/is-enabled" . .  }}
+  <link href="{{ site.Params.video_js.css_url | relURL }}" rel="stylesheet">
+{{- end }}

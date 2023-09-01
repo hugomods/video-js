@@ -1,0 +1,7 @@
+[params.hugopress.modules.video-js.hooks.head-end]
+
+[params.hugopress.modules.video-js.hooks.body-end]
+
+[params.video_js]
+css_url = "https://unpkg.com/video.js/dist/video-js.min.css"
+js_url = "https://unpkg.com/video.js/dist/video.min.js"
