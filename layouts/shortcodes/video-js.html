@@ -5,6 +5,7 @@
 {{- $loop := false }}
 {{- $preload := false }}
 {{- $autoplay := false }}
+{{- $aspectRatio := "" }}
 {{- if .IsNamedParams }}
   {{- $src = .Get "src" }}
   {{- with .Get "type" }}{{ $type = . }}{{ end }}
@@ -13,6 +14,7 @@
   {{- if isset .Params "loop" }}{{ $loop = .Get "loop" }}{{ end }}
   {{- if isset .Params "preload" }}{{ $preload = .Get "preload" }}{{ end }}
   {{- if isset .Params "autoplay" }}{{ $autoplay = .Get "autoplay" }}{{ end }}
+  {{- with .Get "aspectRatio" }}{{ $aspectRatio = . }}{{ end }}
 {{- else }}
   {{- $src = .Get 0 }}
 {{- end }}
@@ -24,4 +26,5 @@
   "loop" $loop
   "autoplay" $autoplay
   "preload" $preload
+  "aspectRatio" $aspectRatio
 ) }}
