@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/hugomods/video-js/compare/v0.1.1...v0.2.0) (2024-09-22)
+
+
+### Features ✨
+
+* add the aspectRatio parameter ([#61](https://github.com/hugomods/video-js/issues/61)) ([f1e8dbe](https://github.com/hugomods/video-js/commit/f1e8dbe94540279d526d6408b89b6a91fad7e773))
+
 ## [0.1.1](https://github.com/hugomods/video-js/compare/v0.1.0...v0.1.1) (2023-09-02)
 
 
