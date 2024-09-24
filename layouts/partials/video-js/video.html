@@ -6,8 +6,12 @@
   {{- else }}
     {{- $class = $class | append "vjs-fluid" }}
   {{- end }}
+  {{- $options := newScratch }}
+  {{- with default site.Params.video_js.playback_rates .playbackRates }}
+    {{- $options.Set "playbackRates" . }}
+  {{- end }}
   <video
-    data-setup="{}"
+    data-setup="{{ $options.Values | jsonify }}"
     width="100%"
     height="100%"
     class="{{ delimit $class ` ` }}"

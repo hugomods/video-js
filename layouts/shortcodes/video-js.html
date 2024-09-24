@@ -6,6 +6,7 @@
 {{- $preload := false }}
 {{- $autoplay := false }}
 {{- $aspectRatio := "" }}
+{{- $playbackRates := "" }}
 {{- if .IsNamedParams }}
   {{- $src = .Get "src" }}
   {{- with .Get "type" }}{{ $type = . }}{{ end }}
@@ -15,8 +16,12 @@
   {{- if isset .Params "preload" }}{{ $preload = .Get "preload" }}{{ end }}
   {{- if isset .Params "autoplay" }}{{ $autoplay = .Get "autoplay" }}{{ end }}
   {{- with .Get "aspectRatio" }}{{ $aspectRatio = . }}{{ end }}
+  {{- with .Get "playbackRates" }}{{ $playbackRates = . }}{{ end }}
 {{- else }}
   {{- $src = .Get 0 }}
+{{- end }}
+{{- if $playbackRates }}
+  {{- $playbackRates = apply (split $playbackRates ",") "cast.ToInt" "." }}
 {{- end }}
 {{ partial "video-js/video" (dict
   "src" $src
@@ -27,4 +32,5 @@
   "autoplay" $autoplay
   "preload" $preload
   "aspectRatio" $aspectRatio
+  "playbackRates" $playbackRates
 ) }}
