@@ -7,6 +7,8 @@
 {{- $autoplay := false }}
 {{- $aspectRatio := "" }}
 {{- $playbackRates := "" }}
+{{- $skipForward := 0 }}
+{{- $skipBackward := 0 }}
 {{- if .IsNamedParams }}
   {{- $src = .Get "src" }}
   {{- with .Get "type" }}{{ $type = . }}{{ end }}
@@ -17,6 +19,8 @@
   {{- if isset .Params "autoplay" }}{{ $autoplay = .Get "autoplay" }}{{ end }}
   {{- with .Get "aspectRatio" }}{{ $aspectRatio = . }}{{ end }}
   {{- with .Get "playbackRates" }}{{ $playbackRates = . }}{{ end }}
+  {{- with .Get "skipForward" }}{{ $skipForward = . }}{{ end }}
+  {{- with .Get "skipBackward" }}{{ $skipBackward = . }}{{ end }}
 {{- else }}
   {{- $src = .Get 0 }}
 {{- end }}
@@ -33,4 +37,6 @@
   "preload" $preload
   "aspectRatio" $aspectRatio
   "playbackRates" $playbackRates
+  "skipForward" $skipForward
+  "skipBackward" $skipBackward
 ) }}

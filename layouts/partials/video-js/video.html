@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/videojs-mobile-ui/dist/videojs-mobile-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-mobile-ui/dist/videojs-mobile-ui.css">
 <div
   class="video-js-container">
   {{- $class := slice "video-js vjs-default-skin" }}
@@ -9,6 +11,16 @@
   {{- $options := newScratch }}
   {{- with default site.Params.video_js.playback_rates .playbackRates }}
     {{- $options.Set "playbackRates" . }}
+  {{- end }}
+  {{- $controlBar := newScratch }}
+  {{- with default site.Params.video_js.skip_forward .skipForward }}
+    {{- $controlBar.SetInMap "skipButtons" "forward" . }}
+  {{- end }}
+  {{- with default site.Params.video_js.skip_backward .skipBackward }}
+    {{- $controlBar.SetInMap "skipButtons" "backward" . }}
+  {{- end }}
+  {{- with $controlBar.Values }}
+    {{- $options.Set "controlBar" . }}
   {{- end }}
   <video
     data-setup="{{ $options.Values | jsonify }}"
