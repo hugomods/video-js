@@ -1,4 +1,5 @@
 {{- $src := "" }}
+{{- $poster := "" }}
 {{- $type := "" }}
 {{- $muted := false }}
 {{- $controls := true }}
@@ -12,6 +13,7 @@
 {{- if .IsNamedParams }}
   {{- $src = .Get "src" }}
   {{- with .Get "type" }}{{ $type = . }}{{ end }}
+  {{- with .Get "poster" }}{{ $poster = . }}{{ end }}
   {{- if isset .Params "muted" }}{{ $muted = .Get "muted" }}{{ end }}
   {{- if isset .Params "controls" }}{{ $controls = .Get "controls" }}{{ end }}
   {{- if isset .Params "loop" }}{{ $loop = .Get "loop" }}{{ end }}
@@ -29,6 +31,7 @@
 {{- end }}
 {{ partial "video-js/video" (dict
   "src" $src
+  "poster" $poster
   "type" $type
   "muted" $muted
   "controls" $controls
