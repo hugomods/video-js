@@ -7,6 +7,7 @@
     {{- $class = $class | append "vjs-fluid" }}
   {{- end }}
   {{- $options := newScratch }}
+  {{- $options.Set "language" (partialCached "video-js/functions/lang" .) }}
   {{- with default site.Params.video_js.playback_rates .playbackRates }}
     {{- $options.Set "playbackRates" . }}
   {{- end }}
@@ -20,7 +21,6 @@
   {{- with $controlBar.Values }}
     {{- $options.Set "controlBar" . }}
   {{- end }}
-  {{- $options.Set "language" "zh-Hans"}}
   <video
     data-setup="{{ $options.Values | jsonify }}"
     width="100%"

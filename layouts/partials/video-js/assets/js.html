@@ -1,3 +1,8 @@
 {{- if partialCached "video-js/functions/is-enabled" . .  }}
-  <script src="{{ site.Params.video_js.js_url | relURL }}"></script>
+  {{- $url := site.Params.video_js.js_url | relURL }}
+  <script src="{{ $url }}"></script>
+  {{- $lang := partialCached "video-js/functions/lang" . }}
+  {{- if ne $lang "en" }}
+    <script src="{{ printf site.Params.video_js.lang_js_url $lang }}"></script>
+  {{- end }}
 {{- end }}
