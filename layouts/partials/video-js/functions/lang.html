@@ -1,0 +1,10 @@
+{{- $lang := site.Language.LanguageCode }}
+{{- $langs := dict
+  "pt-br" "pt-BR"
+  "zh-hans" "zh-Hans"
+  "zh-hant" "zh-Hant"
+}}
+{{- with index $langs $lang }}
+  {{- $lang = . }}
+{{- end }}
+{{- return $lang }}
